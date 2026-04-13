@@ -3,242 +3,981 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yash Panpatil | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Yash Panpatil — Cloud Infrastructure Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  :root {
+    --bg: #060c18;
+    --bg2: #0b1424;
+    --bg3: #111d30;
+    --accent: #38bdf8;
+    --accent2: #06d6a0;
+    --text: #e8f0fe;
+    --muted: #7e97b8;
+    --border: rgba(56,189,248,0.15);
+    --card: rgba(17,29,48,0.8);
+  }
 
-body{
-  background:#0f172a;
-  color:white;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Navbar */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 50px;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  position:sticky;
-  top:0;
-}
+  html { scroll-behavior: smooth; }
 
-.navbar a{
-  color:white;
-  text-decoration:none;
-  margin:0 15px;
-}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
 
-/* Hero Section */
-.hero{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:60px 50px;
-}
+  /* Background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.hero-text h1{
-  font-size:40px;
-}
+  /* Glow orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+  }
+  .orb1 { width: 600px; height: 600px; background: #0ea5e9; top: -200px; right: -100px; }
+  .orb2 { width: 500px; height: 500px; background: #06d6a0; bottom: 100px; left: -150px; }
 
-.hero-text p{
-  margin:15px 0;
-  color:#cbd5f5;
-}
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 64px;
+    background: rgba(6,12,24,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
 
-.profile-img{
-  width:200px;
-  border-radius:20px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.6);
-}
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+    text-decoration: none;
+  }
 
-.btn{
-  padding:12px 25px;
-  background:linear-gradient(45deg,#3b82f6,#06b6d4);
-  border:none;
-  border-radius:25px;
-  color:white;
-  text-decoration:none;
-}
+  .nav-logo span { color: var(--text); }
 
-.section{
-  padding:50px;
-}
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 36px;
+  }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
 
-.card{
-  background:rgba(255,255,255,0.05);
-  padding:20px;
-  border-radius:15px;
-  backdrop-filter:blur(10px);
-  transition:0.3s;
-}
+  nav ul a:hover { color: var(--accent); }
 
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 15px 40px rgba(0,0,0,0.6);
-}
+  .nav-cta {
+    padding: 9px 22px;
+    border: 1px solid var(--accent);
+    color: var(--accent) !important;
+    border-radius: 4px;
+    transition: background 0.2s !important;
+  }
 
-.skills span,.badges span{
-  display:inline-block;
-  margin:5px;
-  padding:8px 12px;
-  border-radius:20px;
-  background:#3b82f6;
-}
+  .nav-cta:hover { background: rgba(56,189,248,0.1) !important; }
 
-.contact i{
-  margin-right:10px;
-}
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 64px 80px;
+    z-index: 1;
+  }
 
-.contact a{
-  color:white;
-  text-decoration:none;
-}
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 
-footer{
-  text-align:center;
-  padding:20px;
-  background:rgba(255,255,255,0.05);
-}
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 24px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--accent2);
+  }
+
+  .hero-text h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    color: #fff;
+  }
+
+  .hero-text h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    background: var(--accent);
+    color: #060c18;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 28px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Profile card */
+  .hero-card {
+    position: relative;
+    width: 260px;
+    flex-shrink: 0;
+  }
+
+  .profile-frame {
+    width: 220px;
+    height: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    position: relative;
+  }
+
+  .profile-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .profile-placeholder i { font-size: 60px; color: var(--border); }
+  .profile-placeholder span { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  /* Floating badges */
+  .badge-float {
+    position: absolute;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+  }
+
+  .badge-float i { color: var(--accent); font-size: 14px; }
+  .badge-float span { color: var(--muted); }
+  .badge-float strong { color: var(--text); font-weight: 400; display: block; font-size: 11px; }
+
+  .badge1 { top: -20px; right: -40px; }
+  .badge2 { bottom: 20px; right: -50px; }
+
+  /* ── SECTIONS ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 64px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: #fff;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.95;
+    margin-bottom: 20px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 20px;
+    transition: border-color 0.3s;
+  }
+
+  .stat-card:hover { border-color: rgba(56,189,248,0.4); }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: transparent; }
+
+  .skills-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .skill-group:hover {
+    border-color: rgba(56,189,248,0.35);
+    transform: translateY(-4px);
+  }
+
+  .skill-group-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: rgba(56,189,248,0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .skill-group-icon i { color: var(--accent); font-size: 16px; }
+
+  .skill-group h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .skill-tag {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(56,189,248,0.08);
+    border: 1px solid rgba(56,189,248,0.2);
+    color: var(--accent);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: rgba(56,189,248,0.4);
+    transform: translateY(-6px);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .project-card:hover::before { opacity: 1; }
+
+  .project-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(56,189,248,0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .project-icon i { color: var(--accent); font-size: 18px; }
+
+  .project-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .project-client {
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .project-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .project-items { list-style: none; }
+
+  .project-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+  }
+
+  .project-items li i {
+    color: var(--accent2);
+    font-size: 10px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .cert-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .cert-card:hover {
+    border-color: rgba(56,189,248,0.35);
+    transform: translateY(-4px);
+  }
+
+  .cert-badge {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(6,214,160,0.15));
+    border: 1px solid rgba(56,189,248,0.2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cert-badge i { font-size: 22px; color: var(--accent); margin-bottom: 2px; }
+
+  .cert-code {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  .cert-info h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .cert-info p { font-size: 12px; color: var(--muted); }
+
+  .cert-vendor {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .contact-intro p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 16px; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    padding: 16px 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: rgba(56,189,248,0.4);
+    transform: translateX(6px);
+  }
+
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: rgba(56,189,248,0.1);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .contact-link-icon i { color: var(--accent); font-size: 15px; }
+
+  .contact-link-text span {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .contact-link-text strong {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 64px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  footer span { color: var(--accent); }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Delay helpers */
+  .d1 { transition-delay: 0.1s; }
+  .d2 { transition-delay: 0.2s; }
+  .d3 { transition-delay: 0.3s; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { gap: 20px; }
+    #hero, section { padding-left: 24px; padding-right: 24px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-card { display: none; }
+    .about-grid, .contact-wrapper, .certs-grid, .projects-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .stat-card { padding: 18px 14px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="navbar">
-  <h2>Yash Panpatil</h2>
-  <div>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-<div class="hero">
-  <div class="hero-text">
-    <h1>Cloud Infrastructure Engineer</h1>
-    <p>Cloud Infrastructure Engineer | Azure | Microsoft 365 | Citrix | VMware | Windows Server Administration |</p>
-    <p>Azure Active Directory [Entra ID] | ServiceNow | Endpoint & Server Management</p>
-    <a href="Yash_Panpatil_Resume.pdf" download class="btn">Download Resume</a>
-  </div>
-  <img src="profile.png" alt="Profile Photo" class="profile-img" onerror="this.onerror=null;this.src='https://via.placeholder.com/200';">
-</div>
+<!-- NAVBAR -->
+<nav>
+  <a href="#hero" class="nav-logo">YP<span>.</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
 
-<div id="about" class="section">
-  <h2>About Me</h2>
-  <div class="card">
-    <p>Cloud Infrastructure Engineer with 3+ years of experience in Windows Administration, Active Directory, Azure AD, and Microsoft 365 environments. Proven expertise in managing hybrid identity (On-Prem AD + Azure AD), ensuring seamless authentication and secure access to cloud services like Exchange Online, Teams, and SharePoint.</p>
-    
-    <p>Hands-on experience in enterprise infrastructure including virtualization platforms (VMware, Hyper-V, Citrix), server administration (Windows & Linux), and endpoint management using Microsoft Intune. Skilled in implementing Conditional Access policies, device compliance, and security baselines to strengthen organizational security posture.</p>
-
-    <p>Strong background in incident management and monitoring using ServiceNow and enterprise tools like Zabbix and Tanium. Experienced in patch management, vulnerability remediation, and automation using PowerShell to improve operational efficiency.</p>
-
-    <p>A proactive team player with a solid understanding of ITIL practices, documentation, and delivering high availability solutions in production environments.</p>
-  </div>
-</div>
-</div>
-
-<div id="skills" class="section">
-  <h2>Skills</h2>
-  <div class="grid">
-    <div class="card"><span>Azure</span></div>
-    <div class="card"><span>Microsoft 365</span></div>
-    <div class="card"><span>Exchange Online</span></div>
-    <div class="card"><span>Active Directory</span></div>
-    <div class="card"><span>Microsoft  Intune</span></div>
-    <div class="card"><span>Windows Server</span></div>
-    <div class="card"><span>Linux Administration</span></div>
-    <div class="card"><span>VMware</span></div>
-    <div class="card"><span>Hyper-V</span></div>
-    <div class="card"><span>Citrix (XenApp / XenDesktop)</span></div>
-    <div class="card"><span>PowerShell</span></div>
-    <div class="card"><span>ServiceNow</span></div>
-    <div class="card"><span>Tanium</span></div>
-    <div class="card"><span>Zabbix</span></div>
-    <div class="card"><span>Endpoint Security</span></div>
-    <div class="card"><span>Patch Management</span></div>
-    <div class="card"><span>Monitoring & Troubleshooting</span></div>
-    <div class="card"><span>ITIL</span></div>
-  </div>
-</div>
-   
-</div>
-
-<div id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="grid">
-
-    <div class="card">
-      <h3><i class="fas fa-cloud"></i> Bayers</h3>
-      <p>Managed Microsoft 365, Azure AD, and virtualization environments.</p>
-      <p><i class="fas fa-check-circle"></i> SLA-based incident handling & RCA</p>
-      <p><i class="fas fa-user-cog"></i> User provisioning, licensing & RBAC</p>
-      <p><i class="fas fa-sync"></i> AD–Azure AD sync & hybrid identity</p>
-      <p><i class="fas fa-server"></i> VMware & Hyper-V administration</p>
-      <p><i class="fas fa-chart-line"></i> Monitoring & reporting (uptime/alerts)</p>
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">Available for Opportunities</div>
+      <h1>Cloud<br><em>Infrastructure</em><br>Engineer.</h1>
+      <p class="hero-desc">
+        3+ years building hybrid cloud environments on Azure · Microsoft 365 · Citrix · VMware.
+        Designing identity, security, and endpoint solutions that scale.
+      </p>
+      <div class="hero-actions">
+        <a href="Yash_Panpatil_Resume.pdf" download class="btn-primary">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <i class="fas fa-paper-plane"></i> Get in Touch
+        </a>
+      </div>
     </div>
 
-    <div class="card">
-      <h3><i class="fas fa-shield-alt"></i> Fresenius</h3>
-      <p>Implemented Microsoft Intune and enhanced security compliance.</p>
-      <p><i class="fas fa-lock"></i> Conditional Access & MFA policies</p>
-      <p><i class="fas fa-laptop"></i> Device enrollment & compliance</p>
-      <p><i class="fas fa-box"></i> App deployment & security baselines</p>
-      <p><i class="fas fa-desktop"></i> Citrix VDI (XenApp/XenDesktop) support</p>
-      <p><i class="fas fa-tools"></i> Windows/Linux patching & hardening</p>
+    <div class="hero-card">
+      <div class="profile-frame">
+        <img src="profile.png" alt="Yash Panpatil"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="profile-placeholder" style="display:none;">
+          <i class="fas fa-user-circle"></i>
+          <span>YASH PANPATIL</span>
+        </div>
+      </div>
+      <div class="badge-float badge1">
+        <i class="fas fa-cloud"></i>
+        <div>
+          <strong>Azure Certified</strong>
+          <span>AZ-204 · AZ-305</span>
+        </div>
+      </div>
+      <div class="badge-float badge2">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <strong>3+ Yrs Experience</strong>
+          <span>Cloud Infra</span>
+        </div>
+      </div>
     </div>
-
-    <div class="card">
-      <h3><i class="fas fa-cogs"></i> Resideo</h3>
-      <p>Handled patching, automation, and enterprise monitoring tools.</p>
-      <p><i class="fas fa-sync"></i> Monthly patching & vulnerability remediation</p>
-      <p><i class="fas fa-code"></i> PowerShell automation (task reduction)</p>
-      <p><i class="fas fa-bug"></i> Incident management via ServiceNow</p>
-      <p><i class="fas fa-network-wired"></i> Tools: Tanium, Zabbix, AV agents</p>
-      <p><i class="fas fa-clipboard-check"></i> ITIL documentation & audits</p>
-    </div>
-
   </div>
 </div>
 
-<div id="certifications" class="section">
-  <h2>Certifications</h2>
-  <div class="grid">
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — Introduction</div>
+  <h2 class="section-title">About Me</h2>
 
-    <div class="card">
-      <h3><i class="fas fa-certificate"></i> AZ-204</h3>
-      <p>Microsoft Azure Developer Associate</p>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>Cloud Infrastructure Engineer with 3+ years of experience in Windows Administration, Active Directory, Azure AD, and Microsoft 365 environments. Proven expertise managing hybrid identity (On-Prem AD + Azure AD), ensuring seamless authentication and secure access to cloud services.</p>
+      <p>Hands-on with enterprise virtualization (VMware, Hyper-V, Citrix), server administration, and endpoint management via Microsoft Intune. Skilled in Conditional Access policies, device compliance, and security baselines.</p>
+      <p>Strong background in incident management using ServiceNow, enterprise monitoring (Zabbix, Tanium), patch management, vulnerability remediation, and PowerShell automation.</p>
     </div>
 
-    <div class="card">
-      <h3><i class="fas fa-certificate"></i> AZ-305</h3>
-      <p>Azure Solutions Architect Expert</p>
+    <div class="stats-grid fade-up d1">
+      <div class="stat-card">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Enterprise Clients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Azure Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">18+</div>
+        <div class="stat-label">Technologies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">02 — Capabilities</div>
+  <h2 class="section-title">Skills & Tools</h2>
+
+  <div class="skills-categories">
+    <div class="skill-group fade-up">
+      <div class="skill-group-icon"><i class="fab fa-microsoft"></i></div>
+      <h3>Microsoft Cloud</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure</span>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">Exchange Online</span>
+        <span class="skill-tag">Azure AD / Entra ID</span>
+        <span class="skill-tag">Teams</span>
+        <span class="skill-tag">SharePoint</span>
+      </div>
     </div>
 
-  </div>
-</div>
+    <div class="skill-group fade-up d1">
+      <div class="skill-group-icon"><i class="fas fa-server"></i></div>
+      <h3>Infrastructure & Virtualization</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Windows Server</span>
+        <span class="skill-tag">Linux Admin</span>
+        <span class="skill-tag">VMware</span>
+        <span class="skill-tag">Hyper-V</span>
+        <span class="skill-tag">Citrix XenApp</span>
+        <span class="skill-tag">Citrix XenDesktop</span>
+      </div>
+    </div>
 
-<div id="contact" class="section contact">
-  <h2>Contact</h2>
-  <div class="card">
-    <p><i class="fas fa-phone"></i><a href="tel:+918308494471">+91 8308494471</a></p>
-    <p><i class="fas fa-envelope"></i><a href="mailto:yashnpp123@gmail.com">yashnpp123@gmail.com</a></p>
-    <p><i class="fab fa-linkedin"></i><a href="https://linkedin.com/in/yash-panpatil-566b37146" target="_blank"> LinkedIn</a></p>
-  </div>
-</div>
+    <div class="skill-group fade-up d2">
+      <div class="skill-group-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3>Security & Endpoint</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Intune</span>
+        <span class="skill-tag">Conditional Access</span>
+        <span class="skill-tag">MFA</span>
+        <span class="skill-tag">Endpoint Security</span>
+        <span class="skill-tag">Patch Management</span>
+      </div>
+    </div>
 
+    <div class="skill-group fade-up">
+      <div class="skill-group-icon"><i class="fas fa-tools"></i></div>
+      <h3>Monitoring & Operations</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">ServiceNow</span>
+        <span class="skill-tag">Zabbix</span>
+        <span class="skill-tag">Tanium</span>
+        <span class="skill-tag">PowerShell</span>
+        <span class="skill-tag">ITIL</span>
+        <span class="skill-tag">Active Directory</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">03 — Work</div>
+  <h2 class="section-title">Client Projects</h2>
+
+  <div class="projects-grid">
+    <!-- Bayer -->
+    <div class="project-card fade-up">
+      <div class="project-icon"><i class="fas fa-cloud"></i></div>
+      <div class="project-client">Enterprise Client</div>
+      <h3>Bayer</h3>
+      <p>Managed Microsoft 365, Azure AD, and enterprise virtualization environments with SLA-based incident handling.</p>
+      <ul class="project-items">
+        <li><i class="fas fa-circle"></i> SLA-based incident handling & root cause analysis</li>
+        <li><i class="fas fa-circle"></i> User provisioning, licensing & RBAC</li>
+        <li><i class="fas fa-circle"></i> AD–Azure AD sync & hybrid identity</li>
+        <li><i class="fas fa-circle"></i> VMware & Hyper-V administration</li>
+        <li><i class="fas fa-circle"></i> Monitoring & reporting (uptime / alerts)</li>
+      </ul>
+    </div>
+
+    <!-- Fresenius -->
+    <div class="project-card fade-up d1">
+      <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="project-client">Healthcare Client</div>
+      <h3>Fresenius</h3>
+      <p>Implemented Microsoft Intune and enhanced security compliance across a regulated healthcare environment.</p>
+      <ul class="project-items">
+        <li><i class="fas fa-circle"></i> Conditional Access & MFA policies</li>
+        <li><i class="fas fa-circle"></i> Device enrollment & compliance</li>
+        <li><i class="fas fa-circle"></i> App deployment & security baselines</li>
+        <li><i class="fas fa-circle"></i> Citrix VDI (XenApp / XenDesktop) support</li>
+        <li><i class="fas fa-circle"></i> Windows / Linux patching & hardening</li>
+      </ul>
+    </div>
+
+    <!-- Resideo -->
+    <div class="project-card fade-up d2">
+      <div class="project-icon"><i class="fas fa-cogs"></i></div>
+      <div class="project-client">Technology Client</div>
+      <h3>Resideo</h3>
+      <p>Led patching cycles, PowerShell automation, and enterprise monitoring tooling across global infrastructure.</p>
+      <ul class="project-items">
+        <li><i class="fas fa-circle"></i> Monthly patching & vulnerability remediation</li>
+        <li><i class="fas fa-circle"></i> PowerShell automation (task reduction)</li>
+        <li><i class="fas fa-circle"></i> Incident management via ServiceNow</li>
+        <li><i class="fas fa-circle"></i> Tools: Tanium, Zabbix, AV agents</li>
+        <li><i class="fas fa-circle"></i> ITIL documentation & compliance audits</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">04 — Credentials</div>
+  <h2 class="section-title">Certifications</h2>
+
+  <div class="certs-grid">
+    <div class="cert-card fade-up">
+      <div class="cert-badge">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-code">AZ-204</div>
+      </div>
+      <div class="cert-info">
+        <h3>Azure Developer Associate</h3>
+        <p>Microsoft Certified · Azure Solutions Development</p>
+      </div>
+      <div class="cert-vendor">Microsoft</div>
+    </div>
+
+    <div class="cert-card fade-up d1">
+      <div class="cert-badge">
+        <i class="fas fa-certificate"></i>
+        <div class="cert-code">AZ-305</div>
+      </div>
+      <div class="cert-info">
+        <h3>Solutions Architect Expert</h3>
+        <p>Microsoft Certified · Azure Infrastructure Design</p>
+      </div>
+      <div class="cert-vendor">Microsoft</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">05 — Let's Connect</div>
+  <h2 class="section-title">Get In Touch</h2>
+
+  <div class="contact-wrapper">
+    <div class="contact-intro fade-up">
+      <p>Looking for a Cloud Infrastructure Engineer who can own complex environments end-to-end? I'd love to talk about how I can help your organization.</p>
+      <div class="contact-links">
+        <a href="tel:+918308494471" class="contact-link">
+          <div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-link-text">
+            <span>Phone</span>
+            <strong>+91 83084 94471</strong>
+          </div>
+        </a>
+        <a href="mailto:yashnpp123@gmail.com" class="contact-link">
+          <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-link-text">
+            <span>Email</span>
+            <strong>yashnpp123@gmail.com</strong>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/yash-panpatil-566b37146" target="_blank" class="contact-link">
+          <div class="contact-link-icon"><i class="fab fa-linkedin"></i></div>
+          <div class="contact-link-text">
+            <span>LinkedIn</span>
+            <strong>yash-panpatil-566b37146</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="fade-up d1" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:40px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">
+        Quick Overview
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Location</span>
+          <span style="font-size:12px;color:var(--text);">India</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Experience</span>
+          <span style="font-size:12px;color:var(--text);">3+ Years</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Specialization</span>
+          <span style="font-size:12px;color:var(--text);">Cloud Infrastructure</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Certifications</span>
+          <span style="font-size:12px;color:var(--accent);">AZ-204 · AZ-305</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="font-size:12px;color:var(--muted);">Availability</span>
+          <span style="font-size:12px;color:var(--accent2);">Open to Opportunities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 Yash Panpatil</p>
+  <p>© 2026 <span>Yash Panpatil</span> · Cloud Infrastructure Engineer · Built with care</p>
 </footer>
 
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Hero elements animate on load
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero-text > *, .hero-card').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = `opacity 0.7s ease ${i * 0.12}s, transform 0.7s ease ${i * 0.12}s`;
+      requestAnimationFrame(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+    });
+  });
+</script>
 </body>
 </html>
