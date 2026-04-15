@@ -20,6 +20,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -30,6 +31,7 @@
     overflow-x: hidden;
   }
 
+  /* Background grid */
   body::before {
     content: '';
     position: fixed;
@@ -42,6 +44,7 @@
     z-index: 0;
   }
 
+  /* Glow orbs */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -62,7 +65,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 18px 64px;
-    background: rgba(6,12,24,0.92);
+    background: rgba(6,12,24,0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
   }
@@ -75,15 +78,16 @@
     color: var(--accent);
     text-decoration: none;
   }
+
   .nav-logo span { color: var(--text); }
 
-  .nav-links {
+  nav ul {
     list-style: none;
     display: flex;
     gap: 36px;
   }
 
-  .nav-links a {
+  nav ul a {
     color: var(--muted);
     text-decoration: none;
     font-size: 12px;
@@ -93,7 +97,7 @@
     font-weight: 400;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  nav ul a:hover { color: var(--accent); }
 
   .nav-cta {
     padding: 9px 22px;
@@ -102,75 +106,8 @@
     border-radius: 4px;
     transition: background 0.2s !important;
   }
+
   .nav-cta:hover { background: rgba(56,189,248,0.1) !important; }
-
-  /* Hamburger */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    z-index: 200;
-    background: none;
-    border: none;
-    outline: none;
-  }
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--accent);
-    border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* Mobile nav drawer */
-  .mobile-nav {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(6,12,24,0.98);
-    backdrop-filter: blur(24px);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-  .mobile-nav.open {
-    opacity: 1;
-    pointer-events: all;
-  }
-  .mobile-nav a {
-    font-family: 'Syne', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: -1px;
-    transition: color 0.2s;
-  }
-  .mobile-nav a:hover,
-  .mobile-nav a:active { color: var(--accent); }
-  .mobile-nav .mobile-cta {
-    margin-top: 8px;
-    padding: 14px 36px;
-    border: 1px solid var(--accent);
-    color: var(--accent) !important;
-    border-radius: 4px;
-    font-size: 14px !important;
-    font-family: 'DM Mono', monospace !important;
-    font-weight: 500 !important;
-    letter-spacing: 2px !important;
-    text-transform: uppercase;
-  }
 
   /* ── HERO ── */
   #hero {
@@ -202,6 +139,7 @@
     color: var(--accent2);
     margin-bottom: 24px;
   }
+
   .hero-tag::before {
     content: '';
     display: inline-block;
@@ -235,7 +173,7 @@
     margin-bottom: 40px;
   }
 
-  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
 
   .btn-primary {
     display: inline-flex;
@@ -252,6 +190,7 @@
     letter-spacing: 0.5px;
     transition: opacity 0.2s, transform 0.2s;
   }
+
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
   .btn-ghost {
@@ -267,6 +206,7 @@
     border-radius: 4px;
     transition: border-color 0.2s, color 0.2s;
   }
+
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
   /* Profile card */
@@ -285,6 +225,7 @@
     background: var(--bg3);
     position: relative;
   }
+
   .profile-frame img {
     width: 100%;
     height: 100%;
@@ -300,9 +241,11 @@
     justify-content: center;
     gap: 12px;
   }
+
   .profile-placeholder i { font-size: 60px; color: var(--border); }
   .profile-placeholder span { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
 
+  /* Floating badges */
   .badge-float {
     position: absolute;
     background: var(--bg2);
@@ -316,9 +259,11 @@
     white-space: nowrap;
     backdrop-filter: blur(10px);
   }
+
   .badge-float i { color: var(--accent); font-size: 14px; }
   .badge-float span { color: var(--muted); }
   .badge-float strong { color: var(--text); font-weight: 400; display: block; font-size: 11px; }
+
   .badge1 { top: -20px; right: -40px; }
   .badge2 { bottom: 20px; right: -50px; }
 
@@ -363,6 +308,7 @@
     line-height: 1.95;
     margin-bottom: 20px;
   }
+
   .about-text p:last-child { margin-bottom: 0; }
 
   .stats-grid {
@@ -378,6 +324,7 @@
     padding: 24px 20px;
     transition: border-color 0.3s;
   }
+
   .stat-card:hover { border-color: rgba(56,189,248,0.4); }
 
   .stat-num {
@@ -389,6 +336,7 @@
     line-height: 1;
     margin-bottom: 6px;
   }
+
   .stat-label {
     font-size: 11px;
     color: var(--muted);
@@ -397,6 +345,8 @@
   }
 
   /* ── SKILLS ── */
+  #skills { background: transparent; }
+
   .skills-categories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -410,6 +360,7 @@
     padding: 28px 24px;
     transition: border-color 0.3s, transform 0.3s;
   }
+
   .skill-group:hover {
     border-color: rgba(56,189,248,0.35);
     transform: translateY(-4px);
@@ -422,6 +373,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 16px;
   }
+
   .skill-group-icon i { color: var(--accent); font-size: 16px; }
 
   .skill-group h3 {
@@ -434,6 +386,7 @@
   }
 
   .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
   .skill-tag {
     font-size: 11px;
     letter-spacing: 0.5px;
@@ -460,10 +413,12 @@
     overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
   }
+
   .project-card:hover {
     border-color: rgba(56,189,248,0.4);
     transform: translateY(-6px);
   }
+
   .project-card::before {
     content: '';
     position: absolute;
@@ -473,6 +428,7 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
+
   .project-card:hover::before { opacity: 1; }
 
   .project-icon {
@@ -482,6 +438,7 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 20px;
   }
+
   .project-icon i { color: var(--accent); font-size: 18px; }
 
   .project-card h3 {
@@ -492,6 +449,7 @@
     margin-bottom: 8px;
     letter-spacing: -0.5px;
   }
+
   .project-client {
     font-size: 11px;
     color: var(--accent2);
@@ -499,13 +457,16 @@
     text-transform: uppercase;
     margin-bottom: 16px;
   }
+
   .project-card p {
     color: var(--muted);
     font-size: 13px;
     line-height: 1.8;
     margin-bottom: 20px;
   }
+
   .project-items { list-style: none; }
+
   .project-items li {
     display: flex;
     align-items: flex-start;
@@ -516,6 +477,7 @@
     border-top: 1px solid rgba(255,255,255,0.04);
     line-height: 1.5;
   }
+
   .project-items li i {
     color: var(--accent2);
     font-size: 10px;
@@ -536,6 +498,7 @@
     gap: 24px;
     transition: border-color 0.3s, transform 0.3s;
   }
+
   .cert-card:hover {
     border-color: rgba(56,189,248,0.35);
     transform: translateY(-4px);
@@ -550,7 +513,9 @@
     align-items: center; justify-content: center;
     flex-shrink: 0;
   }
+
   .cert-badge i { font-size: 22px; color: var(--accent); margin-bottom: 2px; }
+
   .cert-code {
     font-family: 'Syne', sans-serif;
     font-size: 10px;
@@ -558,6 +523,7 @@
     color: var(--accent);
     letter-spacing: 1px;
   }
+
   .cert-info h3 {
     font-family: 'Syne', sans-serif;
     font-size: 18px;
@@ -566,7 +532,9 @@
     letter-spacing: -0.5px;
     margin-bottom: 4px;
   }
+
   .cert-info p { font-size: 12px; color: var(--muted); }
+
   .cert-vendor {
     margin-left: auto;
     font-size: 11px;
@@ -574,7 +542,6 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     writing-mode: vertical-rl;
-    flex-shrink: 0;
   }
 
   /* ── CONTACT ── */
@@ -605,18 +572,21 @@
     border-radius: 10px;
     transition: border-color 0.2s, transform 0.2s;
   }
+
   .contact-link:hover {
     border-color: rgba(56,189,248,0.4);
     transform: translateX(6px);
   }
+
   .contact-link-icon {
     width: 36px; height: 36px;
     border-radius: 8px;
     background: rgba(56,189,248,0.1);
     display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
   }
+
   .contact-link-icon i { color: var(--accent); font-size: 15px; }
+
   .contact-link-text span {
     display: block;
     font-size: 10px;
@@ -625,38 +595,12 @@
     text-transform: uppercase;
     margin-bottom: 2px;
   }
+
   .contact-link-text strong {
     font-size: 13px;
     color: var(--text);
     font-weight: 400;
   }
-
-  /* Quick overview card */
-  .overview-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 40px;
-  }
-  .overview-label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
-  .overview-rows { display: flex; flex-direction: column; gap: 14px; }
-  .overview-row {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 14px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  .overview-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .overview-row .label { font-size: 12px; color: var(--muted); }
-  .overview-row .val   { font-size: 12px; color: var(--text); }
-  .overview-row .val.accent  { color: var(--accent); }
-  .overview-row .val.accent2 { color: var(--accent2); }
 
   /* ── FOOTER ── */
   footer {
@@ -668,6 +612,7 @@
     font-size: 12px;
     color: var(--muted);
   }
+
   footer span { color: var(--accent); }
 
   /* ── ANIMATIONS ── */
@@ -676,142 +621,27 @@
     transform: translateY(30px);
     transition: opacity 0.7s ease, transform 0.7s ease;
   }
+
   .fade-up.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Delay helpers */
   .d1 { transition-delay: 0.1s; }
   .d2 { transition-delay: 0.2s; }
   .d3 { transition-delay: 0.3s; }
 
-  /* ════════════════════════════════════════
-     RESPONSIVE BREAKPOINTS
-  ════════════════════════════════════════ */
-
-  /* ── TABLET (max 1024px) ── */
-  @media (max-width: 1024px) {
-    nav { padding: 16px 32px; }
-    #hero, section { padding-left: 32px; padding-right: 32px; }
-
-    .hero-inner { gap: 48px; }
-    .hero-card { width: 220px; }
-    .profile-frame { width: 180px; height: 220px; }
-    .badge1 { right: -20px; }
-    .badge2 { right: -30px; }
-
-    .projects-grid { grid-template-columns: 1fr 1fr; }
-    .about-grid { gap: 40px; }
-  }
-
-  /* ── MOBILE (max 768px) ── */
-  @media (max-width: 768px) {
-    /* ─ Navbar ─ */
-    nav { padding: 14px 20px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    /* ─ Mobile nav ─ */
-    .mobile-nav { display: flex; }
-
-    /* ─ Hero ─ */
-    #hero {
-      padding: 100px 20px 60px;
-      min-height: auto;
-      padding-bottom: 60px;
-    }
-
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    /* Show a compact inline profile on mobile */
-    .hero-card {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 32px;
-      order: -1;
-    }
-
-    .profile-frame {
-      width: 120px;
-      height: 140px;
-      border-radius: 12px;
-    }
-
-    /* Hide floating badges on mobile - they overflow */
-    .badge-float { display: none; }
-
-    .hero-text h1 {
-      font-size: clamp(32px, 10vw, 48px);
-      letter-spacing: -1.5px;
-    }
-
-    .hero-desc { font-size: 13px; margin-bottom: 28px; }
-
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      justify-content: center;
-      padding: 14px 24px;
-      font-size: 13px;
-    }
-
-    /* ─ Sections ─ */
-    section { padding: 64px 20px; }
-    .section-title { margin-bottom: 32px; }
-
-    /* ─ About ─ */
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
-
-    .stats-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav ul { gap: 20px; }
+    #hero, section { padding-left: 24px; padding-right: 24px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero-card { display: none; }
+    .about-grid, .contact-wrapper, .certs-grid, .projects-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
     .stat-card { padding: 18px 14px; }
-    .stat-num { font-size: 28px; }
-
-    /* ─ Skills ─ */
-    .skills-categories {
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    /* ─ Projects ─ */
-    .projects-grid { grid-template-columns: 1fr; gap: 16px; }
-    .project-card { padding: 24px 20px; }
-
-    /* ─ Certifications ─ */
-    .certs-grid { grid-template-columns: 1fr; gap: 16px; }
-    .cert-card { padding: 24px 20px; gap: 16px; }
-    .cert-info h3 { font-size: 15px; }
-    .cert-vendor { display: none; } /* reclaim space */
-
-    /* ─ Contact ─ */
-    .contact-wrapper { grid-template-columns: 1fr; gap: 32px; }
-    .contact-link:hover { transform: none; } /* no translateX flicker on touch */
-    .contact-link-text strong { font-size: 12px; word-break: break-all; }
-
-    .overview-card { padding: 24px 20px; }
-
-    /* ─ Footer ─ */
-    footer { padding: 28px 20px; font-size: 11px; }
-  }
-
-  /* ── SMALL MOBILE (max 400px) ── */
-  @media (max-width: 400px) {
-    .hero-text h1 { font-size: 30px; }
-    .stats-grid { grid-template-columns: 1fr 1fr; }
-    .stat-num { font-size: 24px; }
-    .cert-badge { width: 48px; height: 48px; }
-    .cert-badge i { font-size: 16px; }
-    .cert-code { font-size: 9px; }
   }
 </style>
 </head>
@@ -822,37 +652,43 @@
 
 <!-- NAVBAR -->
 <nav>
-  <ul class="nav-links">
+  <a href="#hero" class="nav-logo">YP<span>.</span></a>
+  <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
-
-<!-- MOBILE NAV DRAWER -->
-<div class="mobile-nav" id="mobileNav">
-  <a href="#about"          class="mobile-link">About</a>
-  <a href="#skills"         class="mobile-link">Skills</a>
-  <a href="#projects"       class="mobile-link">Projects</a>
-  <a href="#certifications" class="mobile-link">Certs</a>
-  <a href="#contact"        class="mobile-link mobile-cta">Contact</a>
-</div>
 
 <!-- HERO -->
 <div id="hero">
   <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">Available for Opportunities</div>
+      <h1>Cloud<br><em>Infrastructure</em><br>Engineer.</h1>
+      <p class="hero-desc">
+        3+ years building hybrid cloud environments on Azure · Microsoft 365 · Citrix · VMware.
+        Designing identity, security, and endpoint solutions that scale.
+      </p>
+      <div class="hero-actions">
+        <a href="Yash_Panpatil_Resume.pdf" download class="btn-primary">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <i class="fas fa-paper-plane"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+
     <div class="hero-card">
       <div class="profile-frame">
         <img src="profile.png" alt="Yash Panpatil"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <div class="profile-placeholder" style="display:none;">
           <i class="fas fa-user-circle"></i>
-          <span>YP</span>
+          <span>YASH PANPATIL</span>
         </div>
       </div>
       <div class="badge-float badge1">
@@ -870,22 +706,6 @@
         </div>
       </div>
     </div>
-
-    <div class="hero-text">
-      <h1>Cloud<br><em>Infrastructure</em><br>Engineer.</h1>
-      <p class="hero-desc">
-        3+ years building hybrid cloud environments on Azure · Microsoft 365 · Citrix · VMware.
-        Designing identity, security, and endpoint solutions that scale.
-      </p>
-      <div class="hero-actions">
-        <a href="Yash_Panpatil_Resume.pdf" download class="btn-primary">
-          <i class="fas fa-download"></i> Download Resume
-        </a>
-        <a href="#contact" class="btn-ghost">
-          <i class="fas fa-paper-plane"></i> Get in Touch
-        </a>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -893,12 +713,14 @@
 <section id="about">
   <div class="section-label">01 — Introduction</div>
   <h2 class="section-title">About Me</h2>
+
   <div class="about-grid">
     <div class="about-text fade-up">
       <p>Cloud Infrastructure Engineer with 3+ years of experience in Windows Administration, Active Directory, Azure AD, and Microsoft 365 environments. Proven expertise managing hybrid identity (On-Prem AD + Azure AD), ensuring seamless authentication and secure access to cloud services.</p>
       <p>Hands-on with enterprise virtualization (VMware, Hyper-V, Citrix), server administration, and endpoint management via Microsoft Intune. Skilled in Conditional Access policies, device compliance, and security baselines.</p>
       <p>Strong background in incident management using ServiceNow, enterprise monitoring (Zabbix, Tanium), patch management, vulnerability remediation, and PowerShell automation.</p>
     </div>
+
     <div class="stats-grid fade-up d1">
       <div class="stat-card">
         <div class="stat-num">3+</div>
@@ -924,6 +746,7 @@
 <section id="skills">
   <div class="section-label">02 — Capabilities</div>
   <h2 class="section-title">Skills & Tools</h2>
+
   <div class="skills-categories">
     <div class="skill-group fade-up">
       <div class="skill-group-icon"><i class="fab fa-microsoft"></i></div>
@@ -937,6 +760,7 @@
         <span class="skill-tag">SharePoint</span>
       </div>
     </div>
+
     <div class="skill-group fade-up d1">
       <div class="skill-group-icon"><i class="fas fa-server"></i></div>
       <h3>Infrastructure & Virtualization</h3>
@@ -949,6 +773,7 @@
         <span class="skill-tag">Citrix XenDesktop</span>
       </div>
     </div>
+
     <div class="skill-group fade-up d2">
       <div class="skill-group-icon"><i class="fas fa-shield-alt"></i></div>
       <h3>Security & Endpoint</h3>
@@ -960,6 +785,7 @@
         <span class="skill-tag">Patch Management</span>
       </div>
     </div>
+
     <div class="skill-group fade-up">
       <div class="skill-group-icon"><i class="fas fa-tools"></i></div>
       <h3>Monitoring & Operations</h3>
@@ -979,7 +805,9 @@
 <section id="projects">
   <div class="section-label">03 — Work</div>
   <h2 class="section-title">Client Projects</h2>
+
   <div class="projects-grid">
+    <!-- Bayer -->
     <div class="project-card fade-up">
       <div class="project-icon"><i class="fas fa-cloud"></i></div>
       <div class="project-client">Enterprise Client</div>
@@ -993,6 +821,8 @@
         <li><i class="fas fa-circle"></i> Monitoring & reporting (uptime / alerts)</li>
       </ul>
     </div>
+
+    <!-- Fresenius -->
     <div class="project-card fade-up d1">
       <div class="project-icon"><i class="fas fa-shield-alt"></i></div>
       <div class="project-client">Healthcare Client</div>
@@ -1006,6 +836,8 @@
         <li><i class="fas fa-circle"></i> Windows / Linux patching & hardening</li>
       </ul>
     </div>
+
+    <!-- Resideo -->
     <div class="project-card fade-up d2">
       <div class="project-icon"><i class="fas fa-cogs"></i></div>
       <div class="project-client">Technology Client</div>
@@ -1026,6 +858,7 @@
 <section id="certifications">
   <div class="section-label">04 — Credentials</div>
   <h2 class="section-title">Certifications</h2>
+
   <div class="certs-grid">
     <div class="cert-card fade-up">
       <div class="cert-badge">
@@ -1038,6 +871,7 @@
       </div>
       <div class="cert-vendor">Microsoft</div>
     </div>
+
     <div class="cert-card fade-up d1">
       <div class="cert-badge">
         <i class="fas fa-certificate"></i>
@@ -1056,6 +890,7 @@
 <section id="contact">
   <div class="section-label">05 — Let's Connect</div>
   <h2 class="section-title">Get In Touch</h2>
+
   <div class="contact-wrapper">
     <div class="contact-intro fade-up">
       <p>Looking for a Cloud Infrastructure Engineer who can own complex environments end-to-end? I'd love to talk about how I can help your organization.</p>
@@ -1084,28 +919,30 @@
       </div>
     </div>
 
-    <div class="overview-card fade-up d1">
-      <div class="overview-label">Quick Overview</div>
-      <div class="overview-rows">
-        <div class="overview-row">
-          <span class="label">Location</span>
-          <span class="val">India</span>
+    <div class="fade-up d1" style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:40px;">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">
+        Quick Overview
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Location</span>
+          <span style="font-size:12px;color:var(--text);">India</span>
         </div>
-        <div class="overview-row">
-          <span class="label">Experience</span>
-          <span class="val">3+ Years</span>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Experience</span>
+          <span style="font-size:12px;color:var(--text);">3+ Years</span>
         </div>
-        <div class="overview-row">
-          <span class="label">Specialization</span>
-          <span class="val">Cloud Infrastructure</span>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Specialization</span>
+          <span style="font-size:12px;color:var(--text);">Cloud Infrastructure</span>
         </div>
-        <div class="overview-row">
-          <span class="label">Certifications</span>
-          <span class="val accent">AZ-204 · AZ-305</span>
+        <div style="display:flex;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px;color:var(--muted);">Certifications</span>
+          <span style="font-size:12px;color:var(--accent);">AZ-204 · AZ-305</span>
         </div>
-        <div class="overview-row">
-          <span class="label">Availability</span>
-          <span class="val accent2">Open to Opportunities</span>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="font-size:12px;color:var(--muted);">Availability</span>
+          <span style="font-size:12px;color:var(--accent2);">Open to Opportunities</span>
         </div>
       </div>
     </div>
@@ -1118,16 +955,18 @@
 </footer>
 
 <script>
-  // ── Scroll animations ──
+  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add('visible');
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // ── Hero load animation ──
+  // Hero elements animate on load
   window.addEventListener('load', () => {
     document.querySelectorAll('.hero-text > *, .hero-card').forEach((el, i) => {
       el.style.opacity = '0';
@@ -1138,33 +977,6 @@
         el.style.transform = 'translateY(0)';
       });
     });
-  });
-
-  // ── Hamburger / Mobile nav ──
-  const hamburger  = document.getElementById('hamburger');
-  const mobileNav  = document.getElementById('mobileNav');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
-
-  function toggleMenu(open) {
-    hamburger.classList.toggle('open', open);
-    mobileNav.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-
-  hamburger.addEventListener('click', () => toggleMenu(!hamburger.classList.contains('open')));
-
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
-  });
-
-  // Close on outside tap
-  mobileNav.addEventListener('click', (e) => {
-    if (e.target === mobileNav) toggleMenu(false);
-  });
-
-  // Close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') toggleMenu(false);
   });
 </script>
 </body>
